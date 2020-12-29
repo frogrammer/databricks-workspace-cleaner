@@ -44,7 +44,7 @@ def list_all_libraries():
     return [o for o in all_obj if o['object_type'] == 'LIBRARY']
 
 
-def export(list_of_objects):
+def ws_export(list_of_objects):
     cli = get_client()
     ws = WorkspaceService(cli)
     export_objs = []
@@ -53,3 +53,19 @@ def export(list_of_objects):
         export_obj['path'] = path
         export_objs = export_objs + [export_obj]
     return export_objs
+
+
+def ws_import(obj: dict):
+    cli = get_client()
+    ws = WorkspaceService(cli)
+    args = obj
+    permitted_languages = ['SCALA', 'SQL', 'PYTHON', 'R']
+    try:
+        args['language'] = [l for l in permitted_languages if l.lower().startswith(obj['file_type'])][0]
+    except:
+        raise 'language' + obj['language'] + 'not permitted.'
+    args['overwrite'] = True
+    args['format'] = 'SOURCE'
+    del args['file_type']
+    ws.mkdirs('/'.join(args['path'].split('/')[:-1]))
+    ws.import_workspace(**args)

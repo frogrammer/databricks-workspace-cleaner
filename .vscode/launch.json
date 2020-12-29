@@ -25,6 +25,12 @@
             "module": "cli",
             "args": ["export", "notebooks"], 
         },
-        
+        {
+            "name": "import notebooks",
+            "type": "python",
+            "request": "launch",
+            "module": "cli",
+            "args": ["import", "notebooks"], 
+        }
     ]
 }
