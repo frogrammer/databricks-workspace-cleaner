@@ -1,4 +1,3 @@
-from utils.nbconvert import clean_notebook_processor
 from utils.db import ws_import
 from utils.commands import CommandRegistry
 import json
