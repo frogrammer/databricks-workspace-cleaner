@@ -4,10 +4,10 @@ import json
 from io import BytesIO
 from zipfile import ZipFile
 
-def export_notebooks(export_path:str = None):
+def export_notebooks(path:str = 'notebooks.zip'):
     notebook_list = list_all_notebooks()
     notebook_objs = ws_export(notebook_list)
-    with ZipFile('notebooks.zip', 'w') as z:
+    with ZipFile(path, 'w') as z:
         for idx, notebook in enumerate(notebook_objs):
             notebook_str = json.dumps(notebook)
             z.writestr(idx + '.json', notebook_str)
