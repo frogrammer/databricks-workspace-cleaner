@@ -10,7 +10,7 @@ setup(
     author_email='luvinton@microsoft.com',
     license='NA',
     packages=find_packages(),
-    install_requires=['fire', 'databricks-cli', 'jupyter'],
+    install_requires=['fire', 'databricks-cli'],
     tests_require=[],
     classifiers=[],
     test_suite='',

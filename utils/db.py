@@ -44,6 +44,12 @@ def list_all_libraries():
     return [o for o in all_obj if o['object_type'] == 'LIBRARY']
 
 
-def export_notebooks(list_of_objects):
+def export(list_of_objects):
     cli = get_client()
     ws = WorkspaceService(cli)
+    export_objs = []
+    for path in [o['path'] for o in list_of_objects]:
+        export_obj = ws.export_workspace(path)
+        export_obj['path'] = path
+        export_objs = export_objs + [export_obj]
+    return export_objs
