@@ -10,13 +10,13 @@ setup(
     author_email='luvinton@microsoft.com',
     license='NA',
     packages=find_packages(),
-    install_requires=['fire', 'databricks-cli'],
+    install_requires=['fire', 'databricks-cli', 'jupyter'],
     tests_require=[],
     classifiers=[],
     test_suite='',
     entry_points={
         'console_scripts': [
-            'dwc = __main__:main',
+            'dwc = cli.__main__:main',
         ],
     },
 )
