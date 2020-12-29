@@ -1,10 +1,10 @@
 from fire import Fire
 from utils import db
+from utils.commands import CommandRegistry
+from commands import *  # noQA
 
 def main():
-    client = db.get_client()
-    notebooks = db.list_all_notebooks()
-    # Fire(name="dwc")
+    Fire(CommandRegistry.commands(), name="dwc")
 
 if __name__ == '__main__':
     main()

@@ -5,11 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "main",
+            "name": "list notebooks",
             "type": "python",
             "request": "launch",
             "module": "cli",
-            "args": [], 
+            "args": ["list", "notebooks"], 
+        },
+        {
+            "name": "list libraries",
+            "type": "python",
+            "request": "launch",
+            "module": "cli",
+            "args": ["list", "libraries"], 
         },
     ]
 }
