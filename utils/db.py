@@ -67,8 +67,8 @@ def ws_import(obj: dict):
     args['overwrite'] = True
     args['format'] = 'SOURCE'
     del args['file_type']
-    if args['path'][0] == '/':
-        ws.mkdirs('/'.join(args['path'].split('/')[:-1]))
-    else:
-        args['path'] = '/' + args['path']
+    folder = '/'.join(args['path'].split('/')[:-1])
+    if folder[0] != '/':
+        folder = '/' + folder
+    ws.mkdirs(folder)
     ws.import_workspace(**args)
