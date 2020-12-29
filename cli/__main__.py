@@ -8,7 +8,8 @@ def main():
     try:
         Fire(CommandRegistry.commands(), name="dwc")
     except InvalidConfigurationError:
-        raise 'Please configure databricks CLI using command "databricks configure".'
+        print('Please configure databricks CLI using command "databricks configure".')
+        pass
 
 if __name__ == '__main__':
     main()
