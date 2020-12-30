@@ -10,7 +10,7 @@ def export_notebooks(path:str = 'notebooks.zip'):
     with ZipFile(path, 'w') as z:
         for idx, notebook in enumerate(notebook_objs):
             notebook_str = json.dumps(notebook)
-            z.writestr(idx + '.json', notebook_str)
+            z.writestr(str(idx) + '.json', notebook_str)
     print('done')
     
 
