@@ -1,2 +1,3 @@
 fire
 databricks-cli
+git+https://github.com/frogrammer/fire-cli-helper

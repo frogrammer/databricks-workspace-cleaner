@@ -1,5 +1,5 @@
 from utils.db import list_all_notebooks, ws_export
-from utils.commands import CommandRegistry
+from firehelper import CommandRegistry
 import json
 from io import BytesIO
 from zipfile import ZipFile

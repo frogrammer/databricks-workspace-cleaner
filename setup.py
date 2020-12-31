@@ -10,7 +10,7 @@ setup(
     author_email='luvinton@microsoft.com',
     license='NA',
     packages=find_packages(),
-    install_requires=['fire', 'databricks-cli'],
+    install_requires=['fire', 'databricks-cli', 'git+https://github.com/frogrammer/fire-cli-helper'],
     tests_require=[],
     classifiers=[],
     test_suite='',

@@ -1,5 +1,5 @@
 from utils.db import ws_import
-from utils.commands import CommandRegistry
+from firehelper import CommandRegistry
 import json
 from io import BytesIO
 from zipfile import ZipFile, ZipInfo

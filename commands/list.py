@@ -1,5 +1,5 @@
 from utils.db import list_all_notebooks, list_all_libraries
-from utils.commands import CommandRegistry
+from firehelper import CommandRegistry
 from tabulate import tabulate
 
 def list_notebooks():
