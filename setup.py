@@ -11,7 +11,8 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 setup(
     name='databricks-workspace-cleaner',
     version=__version__,
-    description=long_description,
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     url='https://github.com/frogrammer/databricks-workspace-cleaner',
     author='Luke Vinton',
     author_email='luke0vinton@gmail.com',
