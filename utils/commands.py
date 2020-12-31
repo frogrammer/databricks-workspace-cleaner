@@ -1,3 +1,5 @@
+from fire import Fire
+import sys
 """Utility class for registering fire CLI commands."""
 
 
@@ -53,3 +55,10 @@ class CommandRegistry:
     def print_commands():
         r = CommandRegistry.getInstance()._registry
         print('Available commands:\r\n\t{0}\r\nUse --help for further details.\r\n'.format('\r\n\t'.join(r.keys())))
+
+
+def start_fire_cli(appname: str):
+    if len(sys.argv) == 1:
+        CommandRegistry.print_commands()
+    else:
+        Fire(CommandRegistry.commands(), name=appname)
