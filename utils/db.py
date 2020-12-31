@@ -20,6 +20,7 @@ def __list_all(clean_empty_folders = False):
     cli = get_client()
     ws = WorkspaceService(cli)
     all_obj = ws.list('/')['objects']
+    empty_folders = []
     while len([o for o in all_obj if o['object_type'] == 'DIRECTORY']):
         for dir in [o for o in all_obj if o['object_type'] == 'DIRECTORY']:
             dir_obj = []
@@ -28,12 +29,16 @@ def __list_all(clean_empty_folders = False):
             except KeyError:
                 if clean_empty_folders:
                     ws.delete(dir['path'])
+                    empty_folders = empty_folders + [dir]
                 pass
 
             all_obj = all_obj + dir_obj
             all_obj.remove(dir)
             del dir
-    return all_obj
+    if clean_empty_folders:
+        return (all_obj, empty_folders)
+    else:
+        return all_obj
 
 
 def list_all_notebooks():
