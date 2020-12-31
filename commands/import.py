@@ -1,4 +1,3 @@
-from utils.stdout import stdout_print
 from utils.db import ws_import
 from firehelper import CommandRegistry
 import json
@@ -13,7 +12,7 @@ def import_notebooks(path = 'notebooks.zip', import_prefix = 'IMPORT'):
                 notebook_obj = json.loads(f.read())
                 notebook_obj['path'] = '/' + import_prefix + notebook_obj['path']
                 ws_import(notebook_obj)
-    stdout_print('done')
+    print('done')
  
 import_commands = {
     'import': {

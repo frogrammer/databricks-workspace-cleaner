@@ -1,8 +1,3 @@
-import sys
-import subprocess
-
-SINGLE_LINE_LIMIT = 120
-
 class __prev(object):
 
     _i = 3
@@ -17,13 +12,6 @@ class __prev(object):
 
 
 def stdout_print(text: str):
-    if '\n' not in text:
-        text = text[:SINGLE_LINE_LIMIT]
-    sys.stdout.flush()
-    sys.stdout.write('{0}\r'.format(' '.join(['' for i in range(0, __prev().i)])))
-    sys.stdout.flush()
-    sys.stdout.write('{0}\r'.format(text))
+    print(' '.join(['' for i in range(0, __prev().i)]), end='\r', flush=True)
+    print('{0}'.format(text), end='\r', flush=True)
     __prev().i = len(text)
-
-def stdout_flush():
-    sys.stdout.flush()
