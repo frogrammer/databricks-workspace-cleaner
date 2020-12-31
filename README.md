@@ -20,6 +20,7 @@ rm token.txt
 
 ## Commands
 |Command|Sub-Command|Parameters|Description|
+|--------|---------|--------|--------|
 |list|notebooks||List all notebooks in workspace.|
 |list|libraries||List all libraries in workspace.|
 |export|notebooks|path: location to output zip of notebooks|Exports all notebooks from a workspace as base64 source code. The process will remove annotations for run cells|
