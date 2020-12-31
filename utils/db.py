@@ -16,7 +16,7 @@ def get_client():
 
     return ApiClient(**api_opts)
 
-def __list_all(clean_empty_folders = False):
+def __list_all(delete_empty_folders = False):
     cli = get_client()
     ws = WorkspaceService(cli)
     all_obj = ws.list('/')['objects']
@@ -27,7 +27,7 @@ def __list_all(clean_empty_folders = False):
             try:
                 dir_obj = ws.list(dir['path'])['objects']
             except KeyError:
-                if clean_empty_folders:
+                if delete_empty_folders:
                     ws.delete(dir['path'])
                     empty_folders = empty_folders + [dir]
                 pass
@@ -35,7 +35,7 @@ def __list_all(clean_empty_folders = False):
             all_obj = all_obj + dir_obj
             all_obj.remove(dir)
             del dir
-    if clean_empty_folders:
+    if delete_empty_folders:
         return (all_obj, empty_folders)
     else:
         return all_obj
@@ -80,3 +80,8 @@ def ws_import(obj: dict):
             folder = '/'.join(folder_structure)[:-1]
             ws.mkdirs(folder)
     ws.import_workspace(**args)
+
+
+def delete_empty_folders():
+    _, folders = __list_all(delete_empty_folders=True)
+    return folders

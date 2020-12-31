@@ -1,4 +1,4 @@
-from utils.db import list_all_notebooks, ws_export, ws_import
+from utils.db import list_all_notebooks, ws_export, ws_import, delete_empty_folders
 from utils.commands import CommandRegistry
 import json
 from io import BytesIO
@@ -14,7 +14,7 @@ def clean_notebooks():
     print('done')
 
 def clean_empty_folders():
-    _, folders = list_all_notebooks(clean_empty_folders = True)
+    folders = delete_empty_folders()
     print(tabulate(folders))
 
     

@@ -48,5 +48,4 @@ class CommandRegistry:
             dict: fire compatible command dictionary
         """
         r = CommandRegistry.getInstance()._registry
-        r.__doc__ = 'foobar'
         return CommandRegistry.getInstance()._registry
