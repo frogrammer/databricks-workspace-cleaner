@@ -10,8 +10,7 @@ def clean_notebooks():
     notebook_objs = ws_export(notebook_list)
     for notebook_obj in notebook_objs:
         ws_import(notebook_obj)
- 
-    print('done')
+        print(tabulate([notebook_obj]))
 
 def clean_empty_folders():
     folders = delete_empty_folders()
