@@ -6,7 +6,7 @@ from databricks_cli.utils import InvalidConfigurationError
 
 def main():
     try:
-        Fire(CommandRegistry.commands(), command=CommandRegistry.print_commands(), name="dwc")
+        Fire(CommandRegistry.commands(), name="dwc")
     except InvalidConfigurationError:
         print('Please configure databricks CLI using command "databricks configure --token".')
         pass
