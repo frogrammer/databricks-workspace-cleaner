@@ -1,14 +1,21 @@
-"""Setup.py."""
 from setuptools import setup, find_packages
+from os import path
+
 from cli import __version__
+
+# https://packaging.python.org/guides/making-a-pypi-friendly-readme/
+this_directory = path.abspath(path.dirname(__file__))
+with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
+    long_description = f.read()
+
 setup(
     name='databricks-workspace-cleaner',
     version=__version__,
-    description='',
-    url='https://github.com/frogrammer',
+    description=long_description,
+    url='https://github.com/frogrammer/databricks-workspace-cleaner',
     author='Luke Vinton',
-    author_email='luvinton@microsoft.com',
-    license='NA',
+    author_email='luke0vinton@gmail.com',
+    license='Apache 2.0',
     packages=find_packages(),
     install_requires=['fire', 'databricks-cli', 'fire-cli-helper'],
     tests_require=[],
