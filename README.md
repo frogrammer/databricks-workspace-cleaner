@@ -7,7 +7,8 @@ You can also use it to import/export multiple notebooks with this capability, in
 ## Installation
 
 In a python 3.7 environment install this repository, e.g: </br>
-pip install git+https://github.com/frogrammer/fire-commands.git
+pip install git+https://github.com/frogrammer/fire-commands.git </br>
+The tool can be installed to an azure cloud shell.
 
 ## Databricks Workspace Login
 
