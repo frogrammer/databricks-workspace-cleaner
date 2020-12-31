@@ -9,7 +9,9 @@ def clean_notebooks():
     notebook_list = list_all_notebooks()
     notebook_objs = ws_export(notebook_list)
     for notebook_obj in notebook_objs:
+        print(notebook_obj['path'], flush=True)
         ws_import(notebook_obj)
+    print('', flush=True)
     print(tabulate(notebook_list))
 
 def clean_empty_folders():
