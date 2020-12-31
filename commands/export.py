@@ -1,3 +1,4 @@
+from utils.stdout import stdout_print
 from utils.db import list_all_notebooks, ws_export
 from firehelper import CommandRegistry
 import json
@@ -11,7 +12,7 @@ def export_notebooks(path:str = 'notebooks.zip'):
         for idx, notebook in enumerate(notebook_objs):
             notebook_str = json.dumps(notebook)
             z.writestr(str(idx) + '.json', notebook_str)
-    print('done')
+    stdout_print('done')
     
 
 
