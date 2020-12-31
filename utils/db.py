@@ -84,7 +84,7 @@ def ws_import(obj: dict):
     if args['path'][0] == '/':
         folder_structure = args['path'].split('/')
         if len(folder_structure) > 2:
-            folder = '/'.join(folder_structure)[:-1]
+            folder = '/'.join(folder_structure[:-1])
             ws.mkdirs(folder)
     ws.import_workspace(**args)
 
