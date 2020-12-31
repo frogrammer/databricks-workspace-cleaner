@@ -11,6 +11,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 setup(
     name='databricks-workspace-cleaner',
     version=__version__,
+    description='Tool to manage notebooks and clean output cells.',
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/frogrammer/databricks-workspace-cleaner',
