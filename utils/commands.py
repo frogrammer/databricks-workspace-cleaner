@@ -52,4 +52,4 @@ class CommandRegistry:
     @staticmethod
     def print_commands():
         r = CommandRegistry.getInstance()._registry
-        print('Available commands:\r\n{0}\r\nUse --help for further details.\r\n\r\n'.format('\r\n\t'.join(r.keys())))
+        print('Available commands:\r\n\t{0}\r\nUse --help for further details.\r\n'.format('\r\n\t'.join(r.keys())))
