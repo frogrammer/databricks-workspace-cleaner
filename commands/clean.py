@@ -22,7 +22,8 @@ def clean_empty_folders():
 
 clean_commands = {
     'clean': {
-        'notebooks': clean_notebooks
+        'notebooks': clean_notebooks,
+        'empty_folders': clean_empty_folders
     }
 }
 
