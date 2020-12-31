@@ -44,7 +44,7 @@
             "type": "python",
             "request": "launch",
             "module": "cli",
-            "args": ["clean", "empty_folders"], 
+            "args": ["clean", "folders"], 
         }
     ]
 }

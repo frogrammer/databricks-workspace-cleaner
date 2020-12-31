@@ -1,6 +1,7 @@
 from databricks_cli.configure import provider as db_cfg
 from databricks_cli.sdk.api_client import ApiClient
 from databricks_cli.sdk.service import WorkspaceService
+from requests.exceptions import HTTPError
 
 def get_config():
     return db_cfg.get_config()
@@ -28,8 +29,14 @@ def __list_all(delete_empty_folders = False):
                 dir_obj = ws.list(dir['path'])['objects']
             except KeyError:
                 if delete_empty_folders:
-                    ws.delete(dir['path'])
-                    empty_folders = empty_folders + [dir]
+                    try:
+                        ws.delete(dir['path'])
+                        empty_folders = empty_folders + [dir]
+                    except HTTPError as e:
+                        if 'error_code' in e.response.json() and e.response.json()['error_code'] == 'DIRECTORY_NOT_EMPTY':
+                            pass
+                        else:
+                            raise e
                 pass
 
             all_obj = all_obj + dir_obj
