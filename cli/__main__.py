@@ -1,9 +1,7 @@
-import argparse
-from utils import db
-from firehelper import start_fire_cli
 from commands import *  # noQA
 from databricks_cli.utils import InvalidConfigurationError
-import sys
+from firehelper import start_fire_cli
+
 
 def main():
     try:

@@ -2,7 +2,9 @@ from databricks_cli.configure import provider as db_cfg
 from databricks_cli.sdk.api_client import ApiClient
 from databricks_cli.sdk.service import WorkspaceService
 from requests.exceptions import HTTPError
+
 from utils.stdout import *
+
 
 def get_config():
     return db_cfg.get_config()

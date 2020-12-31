@@ -1,8 +1,7 @@
-from utils.db import ws_import
-from firehelper import CommandRegistry
 import json
-from io import BytesIO
-from zipfile import ZipFile, ZipInfo
+from zipfile import ZipFile
+from firehelper import CommandRegistry
+from utils.db import ws_import
 
 
 def import_notebooks(path = 'notebooks.zip', import_prefix = 'IMPORT'):

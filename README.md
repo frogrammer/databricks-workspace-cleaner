@@ -10,7 +10,7 @@ You can also use it to import/export multiple notebooks with this capability, in
 |list|notebooks||List all notebooks in workspace.|
 |list|libraries||List all libraries in workspace.|
 |export|notebooks|path: location to output zip of notebooks|Exports all notebooks from a workspace as base64 source code. The process will remove annotations for run cells|
-|import|notebooks|path: location of notebooks.zip|import notebooks into workspace, overwriting existing.|
+|import|notebooks|path: location of notebooks.zip<br>import_prefix: folder to import into (default: IMPORT)|import notebooks into workspace.|
 |clean|folders||Delete all empty folders in workspace.|
 |clean|notebooks||Remove annotations for run cells from all notebooks in workspace.|
 

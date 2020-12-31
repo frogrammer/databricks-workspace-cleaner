@@ -1,8 +1,9 @@
-from utils.db import list_all_notebooks, ws_export
-from firehelper import CommandRegistry
 import json
-from io import BytesIO
 from zipfile import ZipFile
+
+from firehelper import CommandRegistry
+from utils.db import list_all_notebooks, ws_export
+
 
 def export_notebooks(path:str = 'notebooks.zip'):
     notebook_list = list_all_notebooks()

@@ -1,9 +1,8 @@
-from utils.db import list_all_notebooks, ws_export, ws_import, delete_empty_folders
 from firehelper import CommandRegistry
-import json
-from io import BytesIO
-from zipfile import ZipFile
 from tabulate import tabulate
+from utils.db import (delete_empty_folders, list_all_notebooks, ws_export,
+                      ws_import)
+
 
 def clean_notebooks():
     notebook_list = list_all_notebooks()
