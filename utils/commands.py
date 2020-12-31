@@ -47,6 +47,9 @@ class CommandRegistry:
         Returns:
             dict: fire compatible command dictionary
         """
+        return CommandRegistry.getInstance()._registry
+
+    @staticmethod
+    def print_commands():
         r = CommandRegistry.getInstance()._registry
-        r['__doc__'] = 'Available commands:\r\n{0}\r\nUse --help for further details.'.format('\r\n'.join(r.keys()))
-        return r
+        print('Available commands:\r\n{0}\r\nUse --help for further details.\r\n\r\n'.format('\r\n'.join(r.keys())))
