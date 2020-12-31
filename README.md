@@ -13,11 +13,11 @@ pip install git+https://github.com/frogrammer/fire-commands.git
 
 The dwc CLI is built using the databricks CLI sdk https://github.com/databricks/databricks-cli, and uses its authentication mechanism to login to a workspace.  </br>
 To login to an azure databricks workspace using a user token:  </br>
-'''
+```bash
 echo MY_TOKEN >> token.txt
 databricks configure --host MY_HOST -f token.txt
 rm token.txt 
-'''
+```
 
 ## Commands
 |Command|Sub-Command|Parameters|Description|
