@@ -1,4 +1,4 @@
-"""Utility class for registering CLI commands."""
+"""Utility class for registering fire CLI commands."""
 
 
 class CommandRegistry:
@@ -47,4 +47,6 @@ class CommandRegistry:
         Returns:
             dict: fire compatible command dictionary
         """
+        r = CommandRegistry.getInstance()._registry
+        r.__doc__ = 'foobar'
         return CommandRegistry.getInstance()._registry

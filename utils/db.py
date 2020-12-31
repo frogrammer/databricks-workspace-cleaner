@@ -67,10 +67,27 @@ def ws_import(obj: dict):
     args['overwrite'] = True
     args['format'] = 'SOURCE'
     del args['file_type']
-    folder_structure = args['path'].split('/')
-    if len(folder_structure) > 1:
-        folder = '/'.join(folder_structure)[:-1]
-        if folder and folder[0] != '/':
-            folder = '/' + folder
-        ws.mkdirs(folder)
+    if args['path'][0] == '/':
+        folder_structure = args['path'].split('/')
+        if len(folder_structure) > 1:
+            folder = '/'.join(folder_structure)[:-1]
+            ws.mkdirs(folder)
     ws.import_workspace(**args)
+
+
+def clean_empty_directories():
+    cli = get_client()
+    ws = WorkspaceService(cli)
+    all_obj = ws.list('/')['objects']
+    while len([o for o in all_obj if o['object_type'] == 'DIRECTORY']):
+        for dir in [o for o in all_obj if o['object_type'] == 'DIRECTORY']:
+            dir_obj = []
+            try:
+                dir_obj = ws.list(dir['path'])['objects']
+            except KeyError:
+                pass
+
+            all_obj = all_obj + dir_obj
+            all_obj.remove(dir)
+            del dir
+    return all_obj
