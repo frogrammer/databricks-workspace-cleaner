@@ -16,7 +16,6 @@ def clean_empty_folders():
     folders = delete_empty_folders()
     print(tabulate(folders))
 
-    
 
 
 clean_commands = {
