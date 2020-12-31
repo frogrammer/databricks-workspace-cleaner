@@ -49,4 +49,4 @@ class CommandRegistry:
         """
         r = CommandRegistry.getInstance()._registry
         r['__doc__'] = 'Available commands:\r\n{0}\r\nUse --help for further details.'.format('\r\n'.join(r.keys()))
-        return CommandRegistry.getInstance()._registry
+        return r
