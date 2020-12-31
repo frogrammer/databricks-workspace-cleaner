@@ -4,7 +4,7 @@ import json
 from io import BytesIO
 from zipfile import ZipFile
 
-def clean_notebooks(path:str = 'notebooks.zip'):
+def clean_notebooks():
     notebook_list = list_all_notebooks()
     notebook_objs = ws_export(notebook_list)
     for notebook_obj in notebook_objs:
