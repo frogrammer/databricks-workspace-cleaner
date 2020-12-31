@@ -6,17 +6,18 @@ You can also use it to import/export multiple notebooks with this capability, in
 
 ## Installation
 
-In a python 3.7 environment install this repository, e.g:
+In a python 3.7 environment install this repository, e.g: </br>
 pip install git+https://github.com/frogrammer/fire-commands.git
 
 ## Databricks Workspace Login
 
-The dwc CLI is built using the databricks CLI sdk https://github.com/databricks/databricks-cli, and uses its authentication mechanism to login to a workspace.
-To login to an azure databricks workspace using a user token:
-
+The dwc CLI is built using the databricks CLI sdk https://github.com/databricks/databricks-cli, and uses its authentication mechanism to login to a workspace.  </br>
+To login to an azure databricks workspace using a user token:  </br>
+'''
 echo MY_TOKEN >> token.txt
 databricks configure --host MY_HOST -f token.txt
 rm token.txt 
+'''
 
 ## Commands
 |Command|Sub-Command|Parameters|Description|
