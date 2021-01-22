@@ -133,3 +133,6 @@ notebooks.zip
 
 #vscode
 .vscode/settings.json
+
+./build
+./dist
