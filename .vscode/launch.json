@@ -19,11 +19,18 @@
             "args": ["list", "libraries"], 
         },
         {
-            "name": "export notebooks",
+            "name": "export zip",
             "type": "python",
             "request": "launch",
             "module": "cli",
-            "args": ["export", "notebooks"], 
+            "args": ["export", "zip"], 
+        },
+        {
+            "name": "export folder",
+            "type": "python",
+            "request": "launch",
+            "module": "cli",
+            "args": ["export", "folder"], 
         },
         {
             "name": "import notebooks",

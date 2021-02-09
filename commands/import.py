@@ -4,7 +4,7 @@ from firehelper import CommandRegistry
 from utils.db import ws_import
 
 
-def import_notebooks(path = 'notebooks.zip', import_prefix = 'IMPORT'):
+def import_zip(path = 'notebooks.zip', import_prefix = 'IMPORT'):
     with ZipFile(path, 'r') as z:
         for fn in z.namelist():
             with z.open(fn) as f:
@@ -15,7 +15,7 @@ def import_notebooks(path = 'notebooks.zip', import_prefix = 'IMPORT'):
  
 import_commands = {
     'import': {
-        'notebooks': import_notebooks
+        'zip': import_zip
     }
 }
 

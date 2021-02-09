@@ -5,7 +5,7 @@ from cli import __version__
 
 # https://packaging.python.org/guides/making-a-pypi-friendly-readme/
 this_directory = path.abspath(path.dirname(__file__))
-with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
+with open(path.join(this_directory, 'README.md')) as f:
     long_description = f.read()
 
 setup(
@@ -14,7 +14,7 @@ setup(
     description='Tool to manage notebooks and clean output cells.',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/frogrammer/databricks-workspace-cleaner',
+    url='https://github.com/frogrammer/databricks-workspace-tool',
     author='Luke Vinton',
     author_email='luke0vinton@gmail.com',
     license='Apache 2.0',

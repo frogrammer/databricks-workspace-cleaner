@@ -6,9 +6,9 @@ from utils.db import (delete_empty_folders, list_all_notebooks, ws_export,
 
 def clean_notebooks():
     notebook_list = list_all_notebooks()
-    notebook_objs = ws_export(notebook_list)
-    for notebook_obj in notebook_objs:
-        ws_import(notebook_obj)
+    notebooks = ws_export(notebook_list, format='SOURCE')
+    for notebook_path in notebooks:
+        ws_import(path=notebook_path, **notebooks[notebook_path])
     print(tabulate(notebook_list))
 
 def clean_empty_folders():

@@ -63,38 +63,36 @@ def list_all_libraries():
     return [o for o in all_obj if o['object_type'] == 'LIBRARY']
 
 
-def ws_export(list_of_objects):
+def ws_export(notebook_paths, format='SOURCE'):  # formats: https://docs.databricks.com/dev-tools/api/latest/workspace.html#notebookexportformat
     cli = get_client()
     ws = WorkspaceService(cli)
-    export_objs = []
-    for path in [o['path'] for o in list_of_objects]:
+    export_objs = {}
+    for path in [o['path'] for o in notebook_paths]:
         stdout_print('Exporting {0}\r'.format(path))
-        export_obj = ws.export_workspace(path)
-        export_obj['path'] = path
-        export_objs = export_objs + [export_obj]
+        export_obj = ws.export_workspace(path, format=format)
+        export_objs[path] = export_obj
     return export_objs
 
 
-def ws_import(obj: dict):
+def ws_import(**kwargs):
     cli = get_client()
     ws = WorkspaceService(cli)
-    args = obj
     permitted_languages = ['SCALA', 'SQL', 'PYTHON', 'R']
     try:
-        args['language'] = [l for l in permitted_languages if l.lower().startswith(obj['file_type'])][0]
+        kwargs['language'] = [l for l in permitted_languages if l.lower().startswith(obj['file_type'])][0]
     except:
         raise 'language' + obj['language'] + 'not permitted.'
-    args['overwrite'] = True
-    args['format'] = 'SOURCE'
-    del args['file_type']
-    if args['path'][0] == '/':
-        folder_structure = args['path'].split('/')
+    kwargs['overwrite'] = True
+    kwargs['format'] = 'SOURCE'
+    del kwargs['file_type']
+    if kwargs['path'][0] == '/':
+        folder_structure = kwargs['path'].split('/')
         if len(folder_structure) > 2:
             folder = '/'.join(folder_structure[:-1])
             stdout_print('Creating folder {0}\r'.format(folder))
             ws.mkdirs(folder)
-    stdout_print('Importing {0}\r'.format(args['path']))
-    ws.import_workspace(**args)
+    stdout_print('Importing {0}\r'.format(kwargs['path']))
+    ws.import_workspace(**kwargs)
 
 
 def delete_empty_folders():
