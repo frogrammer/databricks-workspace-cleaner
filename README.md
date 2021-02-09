@@ -1,6 +1,6 @@
 # databricks-workspace-tool
 
-dwc is a tool to clear run cells from notebooks, for example where there might be concern about data held in run cells, or as preparation for commit to source control.
+dwt is a tool to clear run cells from notebooks, for example where there might be concern about data held in run cells, or as preparation for commit to source control.
 
 You can also use it to import/export multiple notebooks with this capability, in use cases where dbc export may not be possible due to volume limits.
 
@@ -22,7 +22,7 @@ The tool can be installed to an azure cloud shell.
 
 ## Databricks Workspace Login
 
-The dwc CLI is built using the databricks CLI sdk https://github.com/databricks/databricks-cli, and uses its authentication mechanism to login to a workspace.  </br>
+The dwt CLI is built using the databricks CLI sdk https://github.com/databricks/databricks-cli, and uses its authentication mechanism to login to a workspace.  </br>
 To login to an azure databricks workspace using a user token:  </br>
 ```bash
 echo MY_TOKEN >> token.txt

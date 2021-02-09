@@ -9,7 +9,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='databricks-workspace-cleaner',
+    name='databricks-workspace-tool',
     version=__version__,
     description='Tool to manage notebooks and clean output cells.',
     long_description=long_description,
@@ -25,7 +25,7 @@ setup(
     test_suite='',
     entry_points={
         'console_scripts': [
-            'dwc = cli.__main__:main',
+            'dwt = cli.__main__:main',
         ],
     },
 )

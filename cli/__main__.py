@@ -5,7 +5,7 @@ from firehelper import start_fire_cli
 
 def main():
     try:
-        start_fire_cli('dwc')
+        start_fire_cli('dwt')
     except InvalidConfigurationError:
         print('Please configure databricks CLI using command "databricks configure --token".')
         pass
