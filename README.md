@@ -1,4 +1,4 @@
-# databricks-workspace-cleaner
+# databricks-workspace-tool
 
 dwc is a tool to clear run cells from notebooks, for example where there might be concern about data held in run cells, or as preparation for commit to source control.
 
