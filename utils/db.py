@@ -62,37 +62,29 @@ def list_all_libraries():
     all_obj = __list_all()
     return [o for o in all_obj if o['object_type'] == 'LIBRARY']
 
-
-def ws_export(notebook_paths, format='SOURCE'):  # formats: https://docs.databricks.com/dev-tools/api/latest/workspace.html#notebookexportformat
+def ws_export(path, format='SOURCE'):  # formats: https://docs.databricks.com/dev-tools/api/latest/workspace.html#notebookexportformat
     cli = get_client()
     ws = WorkspaceService(cli)
-    export_objs = {}
-    for path in [o['path'] for o in notebook_paths]:
-        stdout_print('Exporting {0}\r'.format(path))
-        export_obj = ws.export_workspace(path, format=format)
-        export_objs[path] = export_obj
-    return export_objs
+    stdout_print('Exporting {0}\r'.format(path))
+    return ws.export_workspace(path, format=format)
 
+def ws_export_list(list_of_notebooks: list, format='SOURCE'):
+    for notebook in list_of_notebooks:
+        notebook['obj'] = ws_export(notebook['path'], format=format)
+        yield notebook
 
-def ws_import(**kwargs):
+def ws_import(path, language, format, content, overwrite=False):
     cli = get_client()
     ws = WorkspaceService(cli)
-    permitted_languages = ['SCALA', 'SQL', 'PYTHON', 'R']
-    try:
-        kwargs['language'] = [l for l in permitted_languages if l.lower().startswith(obj['file_type'])][0]
-    except:
-        raise 'language' + obj['language'] + 'not permitted.'
-    kwargs['overwrite'] = True
-    kwargs['format'] = 'SOURCE'
-    del kwargs['file_type']
-    if kwargs['path'][0] == '/':
-        folder_structure = kwargs['path'].split('/')
+
+    if path[0] == '/':
+        folder_structure = path.split('/')
         if len(folder_structure) > 2:
             folder = '/'.join(folder_structure[:-1])
             stdout_print('Creating folder {0}\r'.format(folder))
             ws.mkdirs(folder)
-    stdout_print('Importing {0}\r'.format(kwargs['path']))
-    ws.import_workspace(**kwargs)
+    stdout_print('Importing {0}\r'.format(path))
+    ws.import_workspace(content=str(content, encoding='UTF-8'), path=path, language=language, format=format, overwrite=overwrite)
 
 
 def delete_empty_folders():
