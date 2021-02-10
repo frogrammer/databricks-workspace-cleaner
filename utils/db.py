@@ -73,7 +73,7 @@ def ws_export_list(list_of_notebooks: list, format='SOURCE'):
         notebook['obj'] = ws_export(notebook['path'], format=format)
         yield notebook
 
-def ws_import(path, language, format, content, overwrite=False):
+def ws_import(path, language, format, content, overwrite=False, **kwargs):
     cli = get_client()
     ws = WorkspaceService(cli)
 
@@ -84,7 +84,11 @@ def ws_import(path, language, format, content, overwrite=False):
             stdout_print('Creating folder {0}\r'.format(folder))
             ws.mkdirs(folder)
     stdout_print('Importing {0}\r'.format(path))
-    ws.import_workspace(content=str(content, encoding='UTF-8'), path=path, language=language, format=format, overwrite=overwrite)
+    try:  # if bytes
+        content = str(content, 'UTF-8')
+    except:
+        pass
+    ws.import_workspace(content=content, path=path, language=language, format=format, overwrite=overwrite)
 
 
 def delete_empty_folders():
